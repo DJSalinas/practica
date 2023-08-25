@@ -7,45 +7,41 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
-	private final AlumnoRepository repositoryAlumno;
-	private final CursoRepository repositoryCurso;
-	private final MatriculaRepository repositorioMatricula;
-	private final SeccionRepository repositorioSeccion;
+	private final EmpleadoRepository repositoryE;
+	private final ProyectoRepository repositoryP;
+	private final AsignacionRepository repositoryS;
+	private final AreaRepository repositoryA;
 
 
 	@Autowired
-	public DatabaseLoader(AlumnoRepository repositoryAlumno, CursoRepository repositoryCurso,
-						  MatriculaRepository repositorioMatricula, SeccionRepository repositorioSeccion) {
-		this.repositoryAlumno = repositoryAlumno;
-		this.repositoryCurso = repositoryCurso;
-		this.repositorioMatricula = repositorioMatricula;
-		this.repositorioSeccion = repositorioSeccion;
+	public DatabaseLoader(EmpleadoRepository repositoryE, ProyectoRepository repositoryP,
+						  AsignacionRepository repositoryS, AreaRepository repositoryA) {
+		this.repositoryE = repositoryE;
+		this.repositoryP = repositoryP;
+		this.repositoryS = repositoryS;
+		this.repositoryA = repositoryA;
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
-		this.repositoryAlumno.save(new Alumno("David", "Salinas", "PI73117002"));
-		this.repositoryAlumno.save(new Alumno("Juan", "Sandoval", "SM65329874"));
+		this.repositoryE.save(new Empleado("Heidi Salas", "salas@gmail.com"));
+		this.repositoryE.save(new Empleado("Joselyn Rivera", "rivera@gmail.com"));
 
-		//Alumno
-		Alumno a1 = new Alumno("David", "Salinas Portilla", "PI73117002");
-		this.repositoryAlumno.save(a1);
-		Alumno a2 = new Alumno("Jose", "Portocarrero Mio", "SM79541238");
-		this.repositoryAlumno.save(a2);
-
-		this.repositoryAlumno.save(new Alumno("Alvaro", "Perez", "CH12548936"));
-		this.repositoryCurso.save(new Curso("Servicios WEB", "5"));
-		this.repositoryCurso.save(new Curso("Aplicaciones Móviles", "4"));
 		
-		//Curso
-		Curso c1 = new Curso("Aplicaciones con enfoque orientado a servicios", "4");
-		this.repositoryCurso.save(c1);
+		Empleado e1 = new Empleado("Marco Paz", "paz@gmail.com");
+		this.repositoryE.save(e1);
 
-		//Seccion
-		Seccion s = new Seccion("V.05.2023-IIE");
-		this.repositorioSeccion.save(s);
+		this.repositoryP.save(new Proyecto("Casa Grande", "proyecto casa grande"));
+		this.repositoryP.save(new Proyecto("Asesoria inmobiliaria", "apoyo para construccion"));
+		
+		
+		Proyecto p1 = new Proyecto("Diseño de estructuras", "diseñar la estructura para una casa");
+		this.repositoryP.save(p1);
 
-		//Matricula
-		this.repositorioMatricula.save(new Matricula(s,a1,c1));
+		
+		Area a = new Area("Recursos Humanos");
+		this.repositoryA.save(a);
+
+		this.repositoryS.save(new Asignacion(a,e1,p1));
 	}
 }

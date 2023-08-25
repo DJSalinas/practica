@@ -5,41 +5,41 @@ const {Link} = require('react-router-dom')
 class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {alumnos: [], cursos: [], secciones: []};
+		this.state = {empleados: [], proyectos: [], areas: []};
 	}
 	componentDidMount() {
-		client({method: 'GET', path: '/api/alumnos'}).done(response => {
-			this.setState({alumnos: response.entity._embedded.alumnos});
+		client({method: 'GET', path: '/api/empleados'}).done(response => {
+			this.setState({empleados: response.entity._embedded.empleados});
 		});
 
-		client({method: 'GET', path: '/api/cursos'}).done(response => {
-			this.setState({cursos: response.entity._embedded.cursos});
+		client({method: 'GET', path: '/api/proyectos'}).done(response => {
+			this.setState({proyectos: response.entity._embedded.proyectos});
 		});
 
-		client({method: 'GET', path: '/api/secciones'}).done(response => {
-			this.setState({secciones: response.entity._embedded.secciones});
+		client({method: 'GET', path: '/api/areas'}).done(response => {
+			this.setState({areas: response.entity._embedded.areas});
 		});
 	}
 	render() {
 		return (
 			<>
-				<h1>Bienvenidos a IDAT xD</h1>
+				<h1>Registro de Asignaciones</h1>
 
 				<div style={  {"width": "100%", "display": "flex"}   }>
 					<div style={{"width": "calc(100% / 3)"}}>
-						<Titulo entidad="Alumnos" emoji="👨‍🎓" />
-						<AlumnoList alumnos={this.state.alumnos}/>
-                		<Link to="/nuevo-alumno">Nuevo Alumno</Link>
+						<Titulo entidad="Empleados" emoji="💁🏻‍♂️" />
+						<EmpleadoList empleados={this.state.empleados}/>
+                		<Link to="/nuevo-empleado">Nuevo Empleado</Link>
 					</div>
 					<div style={{"width": "calc(100% / 3)"}}>
-						<Titulo entidad="Cursos" emoji="📝" />
-						<CursoList cursos={this.state.cursos}/>
-						<Link to="/nuevo-curso">Nuevo Curso</Link>
+						<Titulo entidad="Proyectos" emoji="🏢" />
+						<ProyectoList proyectos={this.state.proyectos}/>
+						<Link to="/nuevo-proyecto">Nuevo Proyecto</Link>
 					</div>
 					<div style={{"width": "calc(100% / 3)"}}>
-						<Titulo entidad="Seccion" emoji="👩🏼‍🎤" />
-						<SeccionList secciones={this.state.secciones} />
-						<Link to="/nueva-seccion">Nueva Seccion</Link>
+						<Titulo entidad="Areas" emoji="📚" />
+						<AreaList areas={this.state.areas} />
+						<Link to="/nueva-area">Nueva Area</Link>
 					</div>
 				</div>
 
@@ -62,30 +62,50 @@ const Titulo = (props) => {
 	)
 }
 
-class AlumnoList extends React.Component{
+class EmpleadoList extends React.Component{
 	render() {
-		const alumnos = this.props.alumnos.map(alumno =>
-			<Alumno key={alumno._links.self.href} alumno={alumno}/>
+		const empleados = this.props.empleados.map(empleado =>
+			<Empleado key={empleado._links.self.href} empleado={empleado}/>
 		);
 		return (
 			<table border="1">
 				<tbody>
 					<tr>
-						<th>Nombre</th>
-						<th>Apellido</th>
+						<th>Nombres</th>
+						<th>Correo</th>
 						<th>Acciones</th>
 					</tr>
-					{alumnos}
+					{empleados}
 				</tbody>
 			</table>
 		)
 	}
 }
 
-class CursoList extends React.Component{
+class ProyectoList extends React.Component{
 	render() {
-		const cursos = this.props.cursos.map(curso =>
-			<Curso key={curso._links.self.href} curso={curso}/>
+		const proyectos = this.props.proyectos.map(proyecto =>
+			<Proyecto key={proyecto._links.self.href} proyecto={proyecto}/>
+		);
+		return (
+			<table border="1">
+				<tbody>
+					<tr>
+						<th>Nombre</th>
+						<th>Descripcion</th>
+						<th>Acciones</th>
+					</tr>
+					{proyectos}
+				</tbody>
+			</table>
+		)
+	}
+}
+
+class AreaList extends React.Component{
+	render() {
+		const areas = this.props.areas.map(area =>
+			<Area key={area._links.self.href} area={area}/>
 		);
 		return (
 			<table border="1">
@@ -94,40 +114,20 @@ class CursoList extends React.Component{
 						<th>Nombre</th>
 						<th>Acciones</th>
 					</tr>
-					{cursos}
+					{areas}
 				</tbody>
 			</table>
 		)
 	}
 }
 
-class SeccionList extends React.Component{
+class Empleado extends React.Component{
 	render() {
-		const secciones = this.props.secciones.map(seccion =>
-			<Seccion key={seccion._links.self.href} seccion={seccion}/>
-		);
-		return (
-			<table border="1">
-				<tbody>
-					<tr>
-						<th>Nombre</th>
-						<th>Acciones</th>
-					</tr>
-					{secciones}
-				</tbody>
-			</table>
-		)
-	}
-}
-
-class Alumno extends React.Component{
-	render() {
-		//split omite el separador  -- slice obtiene el ultimo valor
-		const id = this.props.alumno._links.self.href.split("/").slice(-1)
+		const id = this.props.empleado._links.self.href.split("/").slice(-1)
 		return (
 			<tr>
-				<td>{this.props.alumno.nombre}</td>
-				<td>{this.props.alumno.apellido}</td>
+				<td>{this.props.empleado.nombre}</td>
+				<td>{this.props.empleado.correo}</td>
 				<td>
 					<Link to={"/ver-alumno/" + id}>Detalle</Link> | 
 					<Link to={"/editar-alumno/" + id}>Editar</Link>
@@ -138,12 +138,13 @@ class Alumno extends React.Component{
 }
 
 
-class Curso extends React.Component{
+class Proyecto extends React.Component{
 	render() {
-		const id = this.props.curso._links.self.href.split("/").slice(-1)
+		const id = this.props.proyecto._links.self.href.split("/").slice(-1)
 		return (
 			<tr>
-				<td>{this.props.curso.nombre}</td>
+				<td>{this.props.proyecto.nombre}</td>
+				<td>{this.props.proyecto.descripcion}</td>
 				<td>
 					<Link to={"ver-curso/" + id}>Detalle</Link> | 
 					<Link to={"editar-curso/" + id}>Editar</Link>
@@ -153,14 +154,14 @@ class Curso extends React.Component{
 	}
 }
 
-class Seccion extends React.Component{
+class Area extends React.Component{
 	render() {
-		const id = this.props.seccion._links.self.href.split("/").slice(-1)
+		const id = this.props.area._links.self.href.split("/").slice(-1)
 		return (
 			<tr>
-				<td>{this.props.seccion.nombre}</td>
+				<td>{this.props.area.nombre}</td>
 				<td>
-					<Link to={"ver-seccion/" + id}>Detalle</Link>
+					<Link to={"ver-area/" + id}>Ingresar</Link>
 				</td>
 			</tr>
 		)

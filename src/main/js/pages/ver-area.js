@@ -3,54 +3,54 @@ const { Link, useParams } = require('react-router-dom');
 const { useState, useEffect } = require('react');
 const client = require('../client');
 
-const VerSeccionPage = () => {
+const VerAreaPage = () => {
 
     let { id } = useParams();
-    const [seccion, setSeccion] = useState({});
-    const [matriculas, setMatriculas] = useState([]);
+    const [area, setArea] = useState({});
+    const [asignaciones, setAsignaciones] = useState([]);
 
     useEffect(() => {
         client({
             method: 'GET',
-            path: '/api/secciones/' + id
-        }).done(response => setSeccion(response.entity))
+            path: '/api/areas/' + id
+        }).done(response => setArea(response.entity))
         client({
             method: 'GET',
-            path: '/api/secciones/' + id + '/formacion'
-        }).done(response => setMatriculas(response.entity))
+            path: '/api/asignaciones/' + id + '/formacion'
+        }).done(response => setAsignaciones(response.entity))
     }, [])
 
 
     return (
         <>
-            <h1>Ver Seccion</h1>
+            <h1>Ver Area</h1>
             <hr />
 
             <table border="1">
                 <tbody>
                     <tr>
                         <th>Nombre</th>
-                        <td>{seccion.nombre}</td>
+                        <td>{area.nombre}</td>
                     </tr>
                 </tbody>
             </table>
             <hr />
 
-            <h2>Alumnos</h2>
+            <h2>Miembros del Area</h2>
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Alumno</th>
-                        <th>Curso</th>
+                        <th>Empleado</th>
+                        <th>Proyecto</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {matriculas.map(matricula=>{
+                    {asignaciones.map(asignacion=>{
                         return(
-                            <tr key={matricula.ID}>
-                                <td>{matricula.ALUMNO}</td>
-                                <td>{matricula.CURSO}</td>
+                            <tr key={asignacion.ID}>
+                                <td>{asignacion.EMPLEADO}</td>
+                                <td>{asignacion.PROYECTO}</td>
                             </tr>
                         )
                     })}
@@ -60,11 +60,11 @@ const VerSeccionPage = () => {
             </table>
 
             <hr />
-            <Link to={`/ver-seccion/${id}/nuevo-matricula`}>Nuevo Alumno</Link> |
+            <Link to={`/ver-area/${id}/nuevo-asignacion`}>Nueva Asignacion</Link> |
             <Link to="/">Volver</Link>
         </>
     )
 
 }
 
-module.exports = VerSeccionPage;
+module.exports = VerAreaPage;

@@ -40839,31 +40839,26 @@ var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/in
 var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
   createBrowserRouter = _require.createBrowserRouter,
   RouterProvider = _require.RouterProvider;
-
-/*const HomePage = require('./pages/home');
-const NuevoAlumnoPage = require('./pages/nuevo-alumno');
-const VerAlumnoPage = require('./pages/ver-alumno');
-const NuevoCursoPage = require('./pages/nuevo-curso');
-const VerCursoPage = require('./pages/ver-curso');
-const EditarAlumnoPage = require('./pages/editar-alumno');
-const EditarCursoPage = require('./pages/editar-curso');*/
-var VerSeccionPage = __webpack_require__(/*! ./pages/ver-seccion */ "./src/main/js/pages/ver-seccion.js");
-var NuevoMatriculaPage = __webpack_require__(/*! ./pages/nuevo-matricula */ "./src/main/js/pages/nuevo-matricula.js");
-var router = createBrowserRouter([
-/*{ path: '/', element:<HomePage /> },
-{ path: '/ver-alumno/:id', element:<VerAlumnoPage /> },
-{ path: '/nuevo-alumno', element:<NuevoAlumnoPage /> },
-{ path: '/editar-alumno/:id', element:<EditarAlumnoPage /> },
-{ path: '/nuevo-curso', element:<NuevoCursoPage /> },
-{ path: '/ver-curso/:id', element:<VerCursoPage /> },
-{ path: '/editar-curso/:id', element:<EditarCursoPage />},
-{ path: '/ver-seccion/:id', element:<VerSeccionPage />},*/
-{
-  path: '/ver-seccion/:id/nuevo-matricula',
-  element: /*#__PURE__*/React.createElement(NuevoMatriculaPage, null)
-}, {
+var HomePage = __webpack_require__(/*! ./pages/home */ "./src/main/js/pages/home.js");
+var NuevoEmpleadoPage = __webpack_require__(/*! ./pages/nuevo-empleado */ "./src/main/js/pages/nuevo-empleado.js");
+var NuevoProyectoPage = __webpack_require__(/*! ./pages/nuevo-proyecto */ "./src/main/js/pages/nuevo-proyecto.js");
+var VerAreaPage = __webpack_require__(/*! ./pages/ver-area */ "./src/main/js/pages/ver-area.js");
+var NuevAsignacionPage = __webpack_require__(/*! ./pages/nuevo-asignacion */ "./src/main/js/pages/nuevo-asignacion.js");
+var router = createBrowserRouter([{
   path: '/',
-  element: /*#__PURE__*/React.createElement(VerSeccionPage, null)
+  element: /*#__PURE__*/React.createElement(HomePage, null)
+}, {
+  path: '/nuevo-empleado',
+  element: /*#__PURE__*/React.createElement(NuevoEmpleadoPage, null)
+}, {
+  path: '/nuevo-proyecto',
+  element: /*#__PURE__*/React.createElement(NuevoProyectoPage, null)
+}, {
+  path: '/ver-area/:id',
+  element: /*#__PURE__*/React.createElement(VerAreaPage, null)
+}, {
+  path: '/ver-area/:id/nuevo-asignacion',
+  element: /*#__PURE__*/React.createElement(NuevAsignacionPage, null)
 }]);
 ReactDOM.render( /*#__PURE__*/React.createElement(React.StrictMode, null, /*#__PURE__*/React.createElement(RouterProvider, {
   router: router
@@ -40900,10 +40895,257 @@ module.exports = rest.wrap(mime, {
 
 /***/ }),
 
-/***/ "./src/main/js/pages/nuevo-matricula.js":
-/*!**********************************************!*\
-  !*** ./src/main/js/pages/nuevo-matricula.js ***!
-  \**********************************************/
+/***/ "./src/main/js/pages/home.js":
+/*!***********************************!*\
+  !*** ./src/main/js/pages/home.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
+var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
+  Link = _require.Link;
+var HomePage = /*#__PURE__*/function (_React$Component) {
+  _inherits(HomePage, _React$Component);
+  var _super = _createSuper(HomePage);
+  function HomePage(props) {
+    var _this;
+    _classCallCheck(this, HomePage);
+    _this = _super.call(this, props);
+    _this.state = {
+      empleados: [],
+      proyectos: [],
+      areas: []
+    };
+    return _this;
+  }
+  _createClass(HomePage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+      client({
+        method: 'GET',
+        path: '/api/empleados'
+      }).done(function (response) {
+        _this2.setState({
+          empleados: response.entity._embedded.empleados
+        });
+      });
+      client({
+        method: 'GET',
+        path: '/api/proyectos'
+      }).done(function (response) {
+        _this2.setState({
+          proyectos: response.entity._embedded.proyectos
+        });
+      });
+      client({
+        method: 'GET',
+        path: '/api/areas'
+      }).done(function (response) {
+        _this2.setState({
+          areas: response.entity._embedded.areas
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Registro de Asignaciones"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "100%",
+          "display": "flex"
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "calc(100% / 3)"
+        }
+      }, /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Empleados",
+        emoji: "\uD83D\uDC81\uD83C\uDFFB\u200D\u2642\uFE0F"
+      }), /*#__PURE__*/React.createElement(EmpleadoList, {
+        empleados: this.state.empleados
+      }), /*#__PURE__*/React.createElement(Link, {
+        to: "/nuevo-empleado"
+      }, "Nuevo Empleado")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "calc(100% / 3)"
+        }
+      }, /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Proyectos",
+        emoji: "\uD83C\uDFE2"
+      }), /*#__PURE__*/React.createElement(ProyectoList, {
+        proyectos: this.state.proyectos
+      }), /*#__PURE__*/React.createElement(Link, {
+        to: "/nuevo-proyecto"
+      }, "Nuevo Proyecto")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "calc(100% / 3)"
+        }
+      }, /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Areas",
+        emoji: "\uD83D\uDCDA"
+      }), /*#__PURE__*/React.createElement(AreaList, {
+        areas: this.state.areas
+      }), /*#__PURE__*/React.createElement(Link, {
+        to: "/nueva-area"
+      }, "Nueva Area"))));
+    }
+  }]);
+  return HomePage;
+}(React.Component); //Funcion de flecha
+var Titulo = function Titulo(props) {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, props.emoji, " - ", props.entidad), /*#__PURE__*/React.createElement("hr", null), "Lista completa de ", props.entidad.toLowerCase());
+};
+var EmpleadoList = /*#__PURE__*/function (_React$Component2) {
+  _inherits(EmpleadoList, _React$Component2);
+  var _super2 = _createSuper(EmpleadoList);
+  function EmpleadoList() {
+    _classCallCheck(this, EmpleadoList);
+    return _super2.apply(this, arguments);
+  }
+  _createClass(EmpleadoList, [{
+    key: "render",
+    value: function render() {
+      var empleados = this.props.empleados.map(function (empleado) {
+        return /*#__PURE__*/React.createElement(Empleado, {
+          key: empleado._links.self.href,
+          empleado: empleado
+        });
+      });
+      return /*#__PURE__*/React.createElement("table", {
+        border: "1"
+      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombres"), /*#__PURE__*/React.createElement("th", null, "Correo"), /*#__PURE__*/React.createElement("th", null, "Acciones")), empleados));
+    }
+  }]);
+  return EmpleadoList;
+}(React.Component);
+var ProyectoList = /*#__PURE__*/function (_React$Component3) {
+  _inherits(ProyectoList, _React$Component3);
+  var _super3 = _createSuper(ProyectoList);
+  function ProyectoList() {
+    _classCallCheck(this, ProyectoList);
+    return _super3.apply(this, arguments);
+  }
+  _createClass(ProyectoList, [{
+    key: "render",
+    value: function render() {
+      var proyectos = this.props.proyectos.map(function (proyecto) {
+        return /*#__PURE__*/React.createElement(Proyecto, {
+          key: proyecto._links.self.href,
+          proyecto: proyecto
+        });
+      });
+      return /*#__PURE__*/React.createElement("table", {
+        border: "1"
+      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Descripcion"), /*#__PURE__*/React.createElement("th", null, "Acciones")), proyectos));
+    }
+  }]);
+  return ProyectoList;
+}(React.Component);
+var AreaList = /*#__PURE__*/function (_React$Component4) {
+  _inherits(AreaList, _React$Component4);
+  var _super4 = _createSuper(AreaList);
+  function AreaList() {
+    _classCallCheck(this, AreaList);
+    return _super4.apply(this, arguments);
+  }
+  _createClass(AreaList, [{
+    key: "render",
+    value: function render() {
+      var areas = this.props.areas.map(function (area) {
+        return /*#__PURE__*/React.createElement(Area, {
+          key: area._links.self.href,
+          area: area
+        });
+      });
+      return /*#__PURE__*/React.createElement("table", {
+        border: "1"
+      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Acciones")), areas));
+    }
+  }]);
+  return AreaList;
+}(React.Component);
+var Empleado = /*#__PURE__*/function (_React$Component5) {
+  _inherits(Empleado, _React$Component5);
+  var _super5 = _createSuper(Empleado);
+  function Empleado() {
+    _classCallCheck(this, Empleado);
+    return _super5.apply(this, arguments);
+  }
+  _createClass(Empleado, [{
+    key: "render",
+    value: function render() {
+      var id = this.props.empleado._links.self.href.split("/").slice(-1);
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.empleado.nombre), /*#__PURE__*/React.createElement("td", null, this.props.empleado.correo), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
+        to: "/ver-alumno/" + id
+      }, "Detalle"), " |", /*#__PURE__*/React.createElement(Link, {
+        to: "/editar-alumno/" + id
+      }, "Editar")));
+    }
+  }]);
+  return Empleado;
+}(React.Component);
+var Proyecto = /*#__PURE__*/function (_React$Component6) {
+  _inherits(Proyecto, _React$Component6);
+  var _super6 = _createSuper(Proyecto);
+  function Proyecto() {
+    _classCallCheck(this, Proyecto);
+    return _super6.apply(this, arguments);
+  }
+  _createClass(Proyecto, [{
+    key: "render",
+    value: function render() {
+      var id = this.props.proyecto._links.self.href.split("/").slice(-1);
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.proyecto.nombre), /*#__PURE__*/React.createElement("td", null, this.props.proyecto.descripcion), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
+        to: "ver-curso/" + id
+      }, "Detalle"), " |", /*#__PURE__*/React.createElement(Link, {
+        to: "editar-curso/" + id
+      }, "Editar")));
+    }
+  }]);
+  return Proyecto;
+}(React.Component);
+var Area = /*#__PURE__*/function (_React$Component7) {
+  _inherits(Area, _React$Component7);
+  var _super7 = _createSuper(Area);
+  function Area() {
+    _classCallCheck(this, Area);
+    return _super7.apply(this, arguments);
+  }
+  _createClass(Area, [{
+    key: "render",
+    value: function render() {
+      var id = this.props.area._links.self.href.split("/").slice(-1);
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.area.nombre), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
+        to: "ver-area/" + id
+      }, "Ingresar")));
+    }
+  }]);
+  return Area;
+}(React.Component);
+module.exports = HomePage;
+
+/***/ }),
+
+/***/ "./src/main/js/pages/nuevo-asignacion.js":
+/*!***********************************************!*\
+  !*** ./src/main/js/pages/nuevo-asignacion.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40926,29 +41168,29 @@ var NuevoMatriculaPage = function NuevoMatriculaPage() {
     id = _useParams.id;
   var _useState = useState([]),
     _useState2 = _slicedToArray(_useState, 2),
-    alumnos = _useState2[0],
-    setAlumnos = _useState2[1];
+    empleados = _useState2[0],
+    setEmpleados = _useState2[1];
   var _useState3 = useState([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    cursos = _useState4[0],
-    setCursos = _useState4[1];
+    proyectos = _useState4[0],
+    setProyectos = _useState4[1];
   var _useState5 = useState(''),
     _useState6 = _slicedToArray(_useState5, 2),
-    idAlumno = _useState6[0],
-    setIdAlumno = _useState6[1];
+    idEmpleado = _useState6[0],
+    setIdEmpleado = _useState6[1];
   var _useState7 = useState(''),
     _useState8 = _slicedToArray(_useState7, 2),
-    idCurso = _useState8[0],
-    setIdCurso = _useState8[1];
+    idProyecto = _useState8[0],
+    setIdProyecto = _useState8[1];
   var handleSubmit = function handleSubmit(evento) {
     evento.preventDefault();
     client({
       method: 'POST',
-      path: '/api/matriculas',
+      path: '/api/asignaciones',
       entity: {
-        seccion: 'http://localhost:8080/api/secciones/' + id,
-        alumno: 'http://localhost:8080/api/alumnos/' + idAlumno,
-        curso: 'http://localhost:8080/api/cursos/' + idCurso
+        area: 'http://localhost:8080/api/areas/' + id,
+        empleado: 'http://localhost:8080/api/empledos/' + idEmpleado,
+        proyecto: 'http://localhost:8080/api/proyectos/' + idProyecto
       },
       headers: {
         'Content-Type': 'application/json'
@@ -40960,48 +41202,48 @@ var NuevoMatriculaPage = function NuevoMatriculaPage() {
   useEffect(function () {
     client({
       method: 'GET',
-      path: '/api/alumnos'
+      path: '/api/empleados'
     }).done(function (response) {
-      setAlumnos(response.entity._embedded.alumnos);
+      setEmpleados(response.entity._embedded.empleados);
     });
     client({
       method: 'GET',
-      path: '/api/cursos'
+      path: '/api/proyectos'
     }).done(function (response) {
-      setCursos(response.entity._embedded.cursos);
+      setProyectos(response.entity._embedded.proyectos);
     });
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Nuevo Alumno"), /*#__PURE__*/React.createElement("form", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Nuevo Empleado"), /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmit
   }, /*#__PURE__*/React.createElement("label", {
-    htmlFor: "alumno"
-  }, "Alumno"), /*#__PURE__*/React.createElement("select", {
-    name: "alumno",
-    id: "alumno",
+    htmlFor: "empleado"
+  }, "Empleado"), /*#__PURE__*/React.createElement("select", {
+    name: "empleado",
+    id: "empleado",
     onChange: function onChange(e) {
-      setIdAlumno(e.target.value);
+      setIdEmpleado(e.target.value);
     }
-  }, alumnos.map(function (alumno) {
-    var value = alumno._links.self.href.split('/').slice(-1);
+  }, empleados.map(function (empleado) {
+    var value = empleado._links.self.href.split('/').slice(-1);
     return /*#__PURE__*/React.createElement("option", {
       key: value,
       value: value
-    }, "[", alumno.nombre, "]");
-  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Curso "), /*#__PURE__*/React.createElement("select", {
-    name: "curso",
-    id: "curso",
+    }, "[", empleado.nombre, "]");
+  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Proyecto "), /*#__PURE__*/React.createElement("select", {
+    name: "proyecto",
+    id: "proyecto",
     onChange: function onChange(e) {
-      setIdCurso(e.target.value);
+      setIdProyecto(e.target.value);
     }
-  }, cursos.map(function (curso) {
-    var value = curso._links.self.href.split('/').slice(-1);
+  }, proyectos.map(function (proyecto) {
+    var value = proyecto._links.self.href.split('/').slice(-1);
     return /*#__PURE__*/React.createElement("option", {
       key: value,
       value: value
-    }, "(", curso.nombre, ")");
+    }, "(", proyecto.nombre, ")");
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
     type: "submit",
-    value: "Nuevo Alumno"
+    value: "Nuevo Asignacion"
   })), /*#__PURE__*/React.createElement(Link, {
     to: "/"
   }, "Volver"));
@@ -41010,10 +41252,152 @@ module.exports = NuevoMatriculaPage;
 
 /***/ }),
 
-/***/ "./src/main/js/pages/ver-seccion.js":
-/*!******************************************!*\
-  !*** ./src/main/js/pages/ver-seccion.js ***!
-  \******************************************/
+/***/ "./src/main/js/pages/nuevo-empleado.js":
+/*!*********************************************!*\
+  !*** ./src/main/js/pages/nuevo-empleado.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var _require = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+  useState = _require.useState;
+var _require2 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
+  Link = _require2.Link;
+var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
+var NuevoEmpleadoPage = function NuevoEmpleadoPage() {
+  var _useState = useState(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    nombre = _useState2[0],
+    setNombre = _useState2[1];
+  var _useState3 = useState(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    correo = _useState4[0],
+    setCorreo = _useState4[1];
+  var handleSubmit = function handleSubmit(evento) {
+    evento.preventDefault();
+    client({
+      method: 'POST',
+      path: '/api/empleados',
+      entity: {
+        nombre: nombre,
+        correo: correo
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).done(function () {
+      window.location = '/';
+    });
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Nuevo Empleado"), /*#__PURE__*/React.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/React.createElement("label", null, "Nombre"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    id: "nombre",
+    name: "nombre",
+    onChange: function onChange(e) {
+      return setNombre(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Correo"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    id: "correo",
+    name: "correo",
+    onChange: function onChange(e) {
+      return setCorreo(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "submit",
+    value: "Guardar Empleado"
+  })), /*#__PURE__*/React.createElement(Link, {
+    to: "/"
+  }, "Volver"));
+};
+module.exports = NuevoEmpleadoPage;
+
+/***/ }),
+
+/***/ "./src/main/js/pages/nuevo-proyecto.js":
+/*!*********************************************!*\
+  !*** ./src/main/js/pages/nuevo-proyecto.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var _require = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+  useState = _require.useState;
+var _require2 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
+  Link = _require2.Link;
+var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
+var NuevoProyectoPage = function NuevoProyectoPage() {
+  var _useState = useState(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    nombre = _useState2[0],
+    setNombre = _useState2[1];
+  var _useState3 = useState(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    descripcion = _useState4[0],
+    setDescripcion = _useState4[1];
+  var handleSubmit = function handleSubmit(evento) {
+    evento.preventDefault();
+    client({
+      method: 'POST',
+      path: '/api/proyectos',
+      entity: {
+        nombre: nombre,
+        descripcion: descripcion
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).done(function () {
+      window.location = '/';
+    });
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Nuevo Proyecto"), /*#__PURE__*/React.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/React.createElement("label", null, "Nombre"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    id: "nombre",
+    name: "nombre",
+    onChange: function onChange(e) {
+      return setNombre(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Descripcion"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    id: "descripcion",
+    name: "descripcion",
+    onChange: function onChange(e) {
+      return setDescripcion(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "submit",
+    value: "Guardar Proyecto"
+  })), /*#__PURE__*/React.createElement(Link, {
+    to: "/"
+  }, "Volver"));
+};
+module.exports = NuevoProyectoPage;
+
+/***/ }),
+
+/***/ "./src/main/js/pages/ver-area.js":
+/*!***************************************!*\
+  !*** ./src/main/js/pages/ver-area.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -41031,44 +41415,46 @@ var _require2 = __webpack_require__(/*! react */ "./node_modules/react/index.js"
   useState = _require2.useState,
   useEffect = _require2.useEffect;
 var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
-var VerSeccionPage = function VerSeccionPage() {
+var VerAreaPage = function VerAreaPage() {
   var _useParams = useParams(),
     id = _useParams.id;
   var _useState = useState({}),
     _useState2 = _slicedToArray(_useState, 2),
-    seccion = _useState2[0],
-    setSeccion = _useState2[1];
+    area = _useState2[0],
+    setArea = _useState2[1];
   var _useState3 = useState([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    matriculas = _useState4[0],
-    setMatriculas = _useState4[1];
+    asignaciones = _useState4[0],
+    setAsignaciones = _useState4[1];
   useEffect(function () {
     client({
       method: 'GET',
-      path: '/api/secciones/' + id
+      path: '/api/areas/' + id
     }).done(function (response) {
-      return setSeccion(response.entity);
+      return setArea(response.entity);
     });
     client({
       method: 'GET',
-      path: '/api/secciones/' + id + '/formacion'
+      path: '/api/asignaciones/' + id + '/formacion'
     }).done(function (response) {
-      return setMatriculas(response.entity);
+      return setAsignaciones(response.entity);
     });
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Alumnos"), /*#__PURE__*/React.createElement("table", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Ver Area"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("table", {
     border: "1"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Alumno"), /*#__PURE__*/React.createElement("th", null, "Curso"))), /*#__PURE__*/React.createElement("tbody", null, matriculas.map(function (matricula) {
+  }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("td", null, area.nombre)))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, "Miembros del Area"), /*#__PURE__*/React.createElement("table", {
+    border: "1"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Empleado"), /*#__PURE__*/React.createElement("th", null, "Proyecto"))), /*#__PURE__*/React.createElement("tbody", null, asignaciones.map(function (asignacion) {
     return /*#__PURE__*/React.createElement("tr", {
-      key: matricula.ID
-    }, /*#__PURE__*/React.createElement("td", null, matricula.ALUMNO), /*#__PURE__*/React.createElement("td", null, matricula.CURSO));
+      key: asignacion.ID
+    }, /*#__PURE__*/React.createElement("td", null, asignacion.EMPLEADO), /*#__PURE__*/React.createElement("td", null, asignacion.PROYECTO));
   }))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(Link, {
-    to: "/ver-seccion/".concat(id, "/nuevo-matricula")
-  }, "Nuevo Alumno"), " |", /*#__PURE__*/React.createElement(Link, {
+    to: "/ver-area/".concat(id, "/nuevo-asignacion")
+  }, "Nueva Asignacion"), " |", /*#__PURE__*/React.createElement(Link, {
     to: "/"
   }, "Volver"));
 };
-module.exports = VerSeccionPage;
+module.exports = VerAreaPage;
 
 /***/ }),
 

@@ -7,17 +7,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Curso {
+public class Proyecto {
 
 	private @Id @GeneratedValue Long id;
 	private String nombre;
-	private String creditos;
+	private String descripcion;
 
-	private Curso() {}
+	private Proyecto() {}
 
-	public Curso(String nombre, String creditos) {
+	public Proyecto(String nombre, String descripcion) {
 		this.nombre = nombre;
-		this.creditos = creditos;
+		this.descripcion = descripcion;
 	}
 
 
@@ -33,41 +33,38 @@ public class Curso {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public String getCreditos() {
-		return creditos;
-	}
-
-	public void setCreditos(String creditos) {
-		this.creditos = creditos;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		Curso curso = (Curso) o;
-		return Objects.equals(id, curso.id) &&
-			Objects.equals(nombre, curso.nombre) &&
-			Objects.equals(creditos, curso.creditos);
+		Proyecto proyecto = (Proyecto) o;
+		return Objects.equals(id, proyecto.id) &&
+			Objects.equals(nombre, proyecto.nombre) &&
+			Objects.equals(descripcion, proyecto.descripcion);
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, nombre, creditos);
+		return Objects.hash(id, nombre, descripcion);
 	}
 
 
 	@Override
 	public String toString() {
-		return "Instrumento{" +
+		return "Proyecto{" +
 			"id=" + id +
 			", nombre='" + nombre + '\'' +
-			", creditos='" + creditos + '\'' +
+			", descripcion='" + descripcion + '\'' +
 			'}';
 	}
 

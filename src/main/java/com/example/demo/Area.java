@@ -7,14 +7,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Seccion {
+public class Area {
 
     private @Id @GeneratedValue Long id;
     private String nombre;
 
-    public Seccion(){}
+    public Area(){}
 
-    public Seccion(String nombre){
+    public Area(String nombre){
         this.nombre = nombre;
     }
 
@@ -41,7 +41,7 @@ public class Seccion {
 
     @Override
     public String toString() {
-        return "Seccion [id=" + id + ", nombre=" + nombre + "]";
+        return "Area [id=" + id + ", nombre=" + nombre + "]";
     }
 
 }
